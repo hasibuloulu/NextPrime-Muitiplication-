@@ -1,0 +1,140 @@
+/* =====================================================
+######    		TASK-1   	######
+#
+# This task is to implement the following function: `FindNextPrime`.
+# As the name states, given the number `n` the function should return 
+# the next closest prime. 
+# 
+#
+# Examples:
+#  * `FindNextPrime(1000000000)` should return  1000000007
+#  * `FindNextPrime(10000000000)` should return 10000000019
+#
+# Afterward, the next closed two prime numbers will provide as input through scanf 
+# to multiply with each and other. Finally, the last 14-dight of the product will be printed. 
+# 
+# Anyone can use whatever you want (data structures, language features, etc).
+# 
+# Unit tests would be a plus.
+#
+#
+###### 		End TASK-1 	 ######
+======================================================= */
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+// Check if the number is prime or not 
+int isprime(long int num)
+{ long int i;
+
+    // Following Brute force division from 2 to sqrt(num) 
+	// [https://www.cs.yale.edu/homes/aspnes/pinewiki/BruteForce.html]
+	
+    for(i=2;i<=sqrt(num);i++)
+    {
+	if(num%i == 0)
+	    return 0;
+    }
+    return 1;
+}
+
+// Next prime number calculation 
+long int FindNextPrime(long int n)
+{
+    long int prime;
+
+    // Consider 0 and 1 as a special case
+    if(n<2)
+	return 2;
+
+    // Mannipulate number one after another to find next prime
+    for(prime=n+1;;prime++)
+    {
+	if(isprime(prime))
+	    return prime;
+    }
+}
+
+
+int  main()
+{
+    long long int m, n;
+    m= 1000000000;
+    printf("n=%lld, Next_Prime1 = %lld\n",m,FindNextPrime(m));   
+    n= 10000000000;
+    printf("n=%lld, Next_Prime2 = %lld\n",n,FindNextPrime(n));
+	
+    // Product of two Prime Numbers 
+    int x[100], y[100];
+    int product[200]={0};
+    int i,j,tmp;
+    char prod1[101],prod2[101];
+    printf("Enter 10-Digits Next Prime Number : ");
+    scanf(" %s", prod1);
+    printf("Enter 11-Digits Next Prime Number : ");
+    scanf(" %s", prod2);
+	
+	// Length for each Next prime number 
+    int l1 = strlen(prod1);
+    int l2 = strlen(prod2);
+	
+    for(i = l1-1,j=0; i>=0; i--,j++)
+    {
+        x[j] = prod1[i]-'0';
+    }
+    for(i = l2-1,j=0; i>=0; i--,j++)
+    {
+        y[j] = prod2[i]-'0';
+    }
+    for(i = 0; i<l2; i++)
+    {
+        for(j = 0; j<l1; j++)
+        {
+            product[i+j] += y[i]*x[j];
+        }
+    }
+    for(i = 0; i<l1+l2; i++)
+    {
+        tmp = product[i]/10;
+        product[i] = product[i]%10;
+        product[i+1] = product[i+1] + tmp;
+    }
+    for(i = l1+l2; i>= 0; i--)
+    {
+        if(product[i] > 0)
+            break;
+    }
+	// Print the last 14-dight of the product
+    printf("Last 14-dight of the Product : ");
+    for(i = 14; i >= 0; i--)  
+    {
+        printf("%d",product[i]);
+    }
+	
+    return 0;
+}
+
+
+/* =====================================================
+######    		Reference  	######
+#
+# https://www.javatpoint.com/c-program-to-print-the-elements-of-an-array-in-reverse-order
+# https://gist.github.com/sadashiv30/93d0b43f0cecfeb0cbfd
+#
+# Program to Fínd Prime Numbers between given Interval 
+# [https://www.geeksforgeeks.org/program-to-find-prime-numbers-between-given-interval/amp/?fbclid=IwAR3TngH6kaH-2BWkN1NM6tr2hXySs171aEjgYHyZYQX8mEIeyKHcA3q4HEo]
+# https://www.tutorialspoint.com/learn_c_by_examples/prime_number_program_in_c.htm
+# https://crackchallenges.wordpress.com/2018/05/30/next-prime-number/
+# https://se.mathworks.com/matlabcentral/answers/455395-next-prime-number-using-while-loops
+# https://gist.github.com/alabombarda/f3944cd68dda390d25cb
+# https://gist.github.com/bhamelin0/4fae4ffd0e86848f4a93
+# https://gist.github.com/sadashiv30/93d0b43f0cecfeb0cbfd
+# https://www.geeksforgeeks.org/program-to-find-the-next-prime-number/
+#
+#
+###### 		########		 ######
+======================================================= */
+
