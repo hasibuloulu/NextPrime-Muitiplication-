@@ -31,7 +31,7 @@ int isprime(long int num)
 { long int i;
 
     // Following Brute force division from 2 to sqrt(num) 
-	// [https://www.cs.yale.edu/homes/aspnes/pinewiki/BruteForce.html]
+    // [https://www.cs.yale.edu/homes/aspnes/pinewiki/BruteForce.html]
 	
     for(i=2;i<=sqrt(num);i++)
     {
@@ -117,24 +117,4 @@ int  main()
     return 0;
 }
 
-
-/* =====================================================
-######    		Reference  	######
-#
-# https://www.javatpoint.com/c-program-to-print-the-elements-of-an-array-in-reverse-order
-# https://gist.github.com/sadashiv30/93d0b43f0cecfeb0cbfd
-#
-# Program to Fínd Prime Numbers between given Interval 
-# [https://www.geeksforgeeks.org/program-to-find-prime-numbers-between-given-interval/amp/?fbclid=IwAR3TngH6kaH-2BWkN1NM6tr2hXySs171aEjgYHyZYQX8mEIeyKHcA3q4HEo]
-# https://www.tutorialspoint.com/learn_c_by_examples/prime_number_program_in_c.htm
-# https://crackchallenges.wordpress.com/2018/05/30/next-prime-number/
-# https://se.mathworks.com/matlabcentral/answers/455395-next-prime-number-using-while-loops
-# https://gist.github.com/alabombarda/f3944cd68dda390d25cb
-# https://gist.github.com/bhamelin0/4fae4ffd0e86848f4a93
-# https://gist.github.com/sadashiv30/93d0b43f0cecfeb0cbfd
-# https://www.geeksforgeeks.org/program-to-find-the-next-prime-number/
-#
-#
-###### 		########		 ######
-======================================================= */
 
