@@ -25,7 +25,7 @@ long int FindNextPrime(long int n)
     if(n<2)
 	return 2;
 
-    // Mannipulate number one after another to find next prime
+    // Manipulate number one after another to find next prime
     for(prime=n+1;;prime++)
     {
 	if(isprime(prime))
@@ -83,7 +83,7 @@ int  main()
             break;
     }
 	// Print the last 14-dight of the product
-    printf("Last 14-dight of the Product : ");
+    printf("Last 14-digit of the Product : ");
     for(i = 14; i >= 0; i--)  
     {
         printf("%d",product[i]);
